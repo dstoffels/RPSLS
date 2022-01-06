@@ -1,12 +1,11 @@
 from player import Player
-from computer import Computer
-from user import User
 
 class Match:
     def __init__(self):
         self.players: list[Player] = []
         self.score_to_win = 2
         self.current_match = 0
+        self.num_players = 2
         
     def run(self):
         pass
@@ -18,6 +17,7 @@ class Match:
         i = 1
         for player in self.players:
             player.validate_and_set_name(self.players, i)
+            #print(player.name)
             i += 1
 
     def round(self):
@@ -25,3 +25,7 @@ class Match:
 
     def declare_winner(self):
         pass
+
+    def init_players(self, player_type):
+        for i in range(self.num_players):
+            self.players.append(player_type())
