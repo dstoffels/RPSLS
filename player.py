@@ -11,3 +11,6 @@ class Player:
 
     def win_round(self):
         self.score += 1
+
+    def set_name(self):
+        pass
