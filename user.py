@@ -13,8 +13,8 @@ class User(Player):
         gesture = gesture_list[gesture_index]
         return gesture
         
-    def set_name(self):
-        self.name = input("What is your name? ")
+    def set_name(self, player_num):
+        self.name = input(f'Enter a name for player {player_num}: ')
 
     def offer_gestures(self):
         i = 1
