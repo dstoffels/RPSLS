@@ -1,0 +1,13 @@
+ROCK = 'Rock'
+SCISSORS = 'Scissors'
+PAPER = 'Paper'
+LIZARD = 'Lizard'
+SPOCK = 'Spock'
+
+GESTURES = {
+  ROCK: [SCISSORS, LIZARD],
+  SCISSORS: [PAPER, LIZARD],
+  PAPER: [ROCK, SPOCK],
+  LIZARD: [SPOCK, PAPER],
+  SPOCK: [SCISSORS, ROCK]
+}
