@@ -10,9 +10,8 @@ class User(Player):
         self.offer_gestures()
         gesture_list = list(self.gestures)
         gesture_index = validate_index("Enter the number of the gesture you would like to use: ", gesture_list)
-        gesture = gesture_list[gesture_index]
-        return gesture
-        
+        self.gesture = gesture_list[gesture_index]
+       
     def set_name(self, player_num):
         self.name = input(f'Enter a name for player {player_num}: ')
 

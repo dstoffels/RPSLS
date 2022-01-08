@@ -5,11 +5,12 @@ class Player:
         self.name = ''
         self.score = 0
         self.gestures = GESTURES
+        self.current_gesture = ""
     
     def select_gesture(self):
         pass
 
-    def win_round(self):
+    def score_point(self):
         self.score += 1
 
     def set_name(self):
@@ -23,3 +24,7 @@ class Player:
                 if player == self: continue
                 elif player.name == self.name: is_unique = False
                 else: is_unique = True
+
+    def display_gesture(self):
+        print(f"{self.name} chooses {self.gesture}")
+    

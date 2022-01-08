@@ -8,8 +8,7 @@ class Computer(Player):
     
     def select_gesture(self):
         gesture_list = list(self.gestures)
-        gesture = random.choice(gesture_list)
-        return gesture
+        self.gesture = random.choice(gesture_list)
 
     def set_name(self, player_num):
         self.name = random.choice(self.names)
