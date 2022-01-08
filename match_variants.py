@@ -1,6 +1,6 @@
 from match import Match
 from computer import Computer
-from user import User
+from human import Human
 
 class Computer_Match(Match):
     def __init__(self):
@@ -10,7 +10,7 @@ class Computer_Match(Match):
 class Human_Match(Match):
     def __init__(self):
         super().__init__()
-        self.init_players(User)
+        self.init_players(Human)
 
 class Solo_Match(Match):
     def __init__(self):
@@ -24,4 +24,4 @@ class Solo_Match(Match):
             if i % 2 == 0:
                 self.players.append(Computer())
             else:
-                self.players.append(User())
+                self.players.append(Human())

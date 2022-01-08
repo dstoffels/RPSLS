@@ -33,7 +33,7 @@ class Match:
     def round(self):
         self.select_gestures()
         self.display_gestures()
-        self.compare_gestures_and_award_point ()
+        self.compare_gestures_and_award_point()
         # display score
 
     def display_gestures(self):

@@ -3,11 +3,13 @@ SCISSORS = 'Scissors'
 PAPER = 'Paper'
 LIZZY = 'Lizzy'
 SPOCK = 'Spock'
+FORFEIT = 'Forfeit'
 
 GESTURES = {
   ROCK: [SCISSORS, LIZZY],
   SCISSORS: [PAPER, LIZZY],
   PAPER: [ROCK, SPOCK],
   LIZZY: [SPOCK, PAPER],
-  SPOCK: [SCISSORS, ROCK]
+  SPOCK: [SCISSORS, ROCK],
+  FORFEIT: []
 }

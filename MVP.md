@@ -20,8 +20,8 @@ descriptive messages. -->
 <!-- (15 points): As a developer, I want to find a way to properly incorporate
 inheritance into my game. -->
 
-(5 points): As a developer, I want to account for and handle bad user input,
-ensuring that any user input is validated and reobtained if necessary.
+<!-- (5 points): As a developer, I want to account for and handle bad user input,
+ensuring that any user input is validated and reobtained if necessary. -->
 
 <!-- (10 points): As a developer, I want to store all of the gesture options/choices
 in a list. I want to find a way to utilize the list of gestures within my code
@@ -37,5 +37,5 @@ rules! -->
 <!-- (10 points): As a player, I want the game of RPSLS to be at minimum a “best
 of three” to decide a winner. -->
 
-(10 points): As a player, I want the option of a single player (human vs AI) or
-a multiplayer (human vs human) game.
+<!-- (10 points): As a player, I want the option of a single player (human vs AI) or
+a multiplayer (human vs human) game. -->
