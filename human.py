@@ -19,6 +19,7 @@ class Human(Player):
 
     def offer_gestures(self):
         i = 1
+        print("")
         for item in self.gestures.keys():
             print(f"{i}. {item}")
             i += 1

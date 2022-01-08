@@ -39,6 +39,7 @@ class Match:
         self.current_round += 1
 
     def display_gestures(self):
+        print("")
         for player in self.players:
             player.display_gesture()
 
@@ -67,7 +68,7 @@ class Match:
             print(f"{player.name}: {player.score}")
 
     def display_round(self):
-        print(f"\nRound {self.current_round}\n")
+        print(f"\nRound {self.current_round}")
 
     #     for player in self.players:
     #         for compared_player in self.players:
