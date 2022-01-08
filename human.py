@@ -9,7 +9,7 @@ class Human(Player):
     def select_gesture(self):
         self.offer_gestures()
         gesture_list = list(self.gestures)
-        gesture_index = validate_index("Enter the number of the gesture you would like to use: ", gesture_list)
+        gesture_index = validate_index(f"{self.name}, enter the number of the gesture you would like to use: ", gesture_list)
         self.current_gesture = gesture_list[gesture_index]
         self.did_forfeit_match()
 
