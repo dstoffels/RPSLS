@@ -31,10 +31,12 @@ class Match:
             i += 1
 
     def round(self):
+        self.display_round()
         self.select_gestures()
         self.display_gestures()
         self.compare_gestures_and_award_point()
-        # display score
+        self.display_player_scores()
+        self.current_round += 1
 
     def display_gestures(self):
         for player in self.players:
@@ -58,6 +60,14 @@ class Match:
             elif player2.has_winning_gesture(player1.current_gesture): player2.score_point(player1.current_gesture)
             else: print("It's a tie!")
         else: pass ## run logic for 3+ players (see below)
+
+    def display_player_scores(self):
+        print("\nScoreboard:\n")
+        for player in self.players:
+            print(f"{player.name}: {player.score}")
+
+    def display_round(self):
+        print(f"\nRound {self.current_round}\n")
 
     #     for player in self.players:
     #         for compared_player in self.players:

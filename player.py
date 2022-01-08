@@ -11,7 +11,7 @@ class Player:
         pass
 
     def score_point(self, opponent_gesture):
-        print(f'{self.current_gesture} beats {opponent_gesture}\nPoint to {self.name}!')
+        print(f'\n{self.current_gesture} beats {opponent_gesture}. Point to {self.name}!')
         self.score += 1
 
     def set_name(self):
