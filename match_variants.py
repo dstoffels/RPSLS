@@ -7,7 +7,7 @@ class Computer_Match(Match):
         super().__init__()
         self.init_players(Computer)
     
-class Player_Match(Match):
+class Human_Match(Match):
     def __init__(self):
         super().__init__()
         self.init_players(User)
