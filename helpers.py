@@ -1,3 +1,5 @@
+import os
+
 def validate_int_input(prompt):
     while True:
         try:
@@ -20,3 +22,6 @@ def validate_yes_or_no(prompt):
             case 'y': return True
             case 'n': return False
             case _: prompt = 'Please enter yes or no: '
+
+def clear_console():
+    os.system('cls')
