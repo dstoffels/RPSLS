@@ -1,4 +1,4 @@
-from helpers import clear_console
+from helpers import clear_console, pause
 from match import Match
 from computer import Computer
 from human import Human

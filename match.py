@@ -1,4 +1,6 @@
 from random import choice
+import time
+from helpers import clear_console, pause
 from player import Player
 
 class Match:
@@ -7,18 +9,20 @@ class Match:
         self.score_to_win = 2
         self.current_round = 1
         self.num_players = 2
+        self.winner = None
         
     def run(self):
         self.setup_match()
-        while not self.has_winner():
+        while not self.winner:
             self.round()
+            self.winner = self.has_winner()
+        self.declare_winner(self.winner)
+        input('\nPress return to continue...')
         
     def has_winner(self):
         for player in self.players:
-            if player.score == self.score_to_win:
-                self.declare_winner(player)
-                return True
-        return False
+            if player.score == self.score_to_win: return player
+        return None
 
     def setup_match(self):
         self.set_player_names()
@@ -42,13 +46,14 @@ class Match:
         print("")
         for player in self.players:
             player.display_gesture()
+            time.sleep(1)
 
     def select_gestures(self):
         for player in self.players:
             player.select_gesture()
 
     def declare_winner(self, player): #good place to implement slow crawl
-        print(f"Winner: {player.name}")
+        print(f"\n******{player.name} WINS!!******")
 
     def init_players(self, player_type):
         for i in range(self.num_players):
@@ -59,16 +64,20 @@ class Match:
             player1, player2 = self.players
             if player1.has_winning_gesture(player2.current_gesture): player1.score_point(player2.current_gesture)
             elif player2.has_winning_gesture(player1.current_gesture): player2.score_point(player1.current_gesture)
-            else: print("It's a tie!")
+            else: print("\nIt's a tie!")
+            time.sleep(0.75)
         else: pass ## run logic for 3+ players (see below)
 
     def display_player_scores(self):
         print("\nScoreboard:\n")
         for player in self.players:
             print(f"{player.name}: {player.score}")
+        if not self.has_winner(): time.sleep(3)
 
     def display_round(self):
+        clear_console()
         print(f"\nRound {self.current_round}")
+        time.sleep(1)
 
     #     for player in self.players:
     #         for compared_player in self.players:

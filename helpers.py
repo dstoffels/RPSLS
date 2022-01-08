@@ -1,4 +1,5 @@
 import os
+import time
 
 def validate_int_input(prompt):
     while True:
@@ -25,3 +26,6 @@ def validate_yes_or_no(prompt):
 
 def clear_console():
     os.system('cls')
+
+def pause():
+    time.sleep(3)

@@ -1,4 +1,4 @@
-from helpers import validate_int_input
+from helpers import clear_console, validate_int_input
 from match import Match
 from match_variants import Computer_Match, Human_Match, Solo_Match
 
@@ -18,6 +18,7 @@ class MainMenu:
 
     def run(self):
         while True:
+            clear_console()
             userInput = validate_int_input(self.PROMPT)
             match userInput:
                 case 1: self.match = Solo_Match()
