@@ -15,6 +15,7 @@ class Player_Match(Match):
 class Solo_Match(Match):
     def __init__(self):
         super().__init__()
+        self.init_players()
 
     #right now mixed players switch back and forth between human and computer equally
     #TODO make it so users can specify how many computer/user players they want

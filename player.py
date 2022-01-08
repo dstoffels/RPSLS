@@ -10,7 +10,8 @@ class Player:
     def select_gesture(self):
         pass
 
-    def score_point(self):
+    def score_point(self, opponent_gesture):
+        print(f'{self.current_gesture} beats {opponent_gesture}\nPoint to {self.name}!')
         self.score += 1
 
     def set_name(self):
@@ -25,6 +26,9 @@ class Player:
                 elif player.name == self.name: is_unique = False
                 else: is_unique = True
 
+    def has_winning_gesture(self, opponent_gesture):
+        return True if opponent_gesture in self.gestures[self.current_gesture] else False
+
     def display_gesture(self):
-        print(f"{self.name} chooses {self.gesture}")
+        print(f"{self.name} chooses {self.current_gesture}")
     
