@@ -17,14 +17,19 @@ class Player:
     def set_name(self):
         pass
 
-    def validate_and_set_name(self, players, player_num):
+    # refactor??
+    def validate_and_set_name(self, players, player_num): 
+        prompt = f'Enter a name for player {player_num}: '
         is_unique = False
         while not is_unique:
-            self.set_name(player_num)
+            self.set_name(prompt)
             for player in players:
-                if player == self: continue
-                elif player.name == self.name: is_unique = False
-                else: is_unique = True
+                if player != self: 
+                    match self.name:
+                        case '': prompt = 'Name cannot be blank, please re-enter: '
+                        case player.name: prompt = 'Name must be unique, please re-enter: '
+                        case _: is_unique = True
+    
 
     def has_winning_gesture(self, opponent_gesture):
         return True if opponent_gesture in self.gestures[self.current_gesture] else False

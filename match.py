@@ -25,6 +25,7 @@ class Match:
         return None
 
     def setup_match(self):
+        # ask for num of points to win
         self.set_player_names()
         
     def set_player_names(self):
@@ -105,5 +106,3 @@ class Match:
     #             loser = player
     #         self.print_point_scored(winner, loser)
     #         winner.score_point()
-
-

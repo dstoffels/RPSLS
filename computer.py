@@ -12,6 +12,6 @@ class Computer(Player):
         gesture_list.remove(FORFEIT)
         self.current_gesture = random.choice(gesture_list)
 
-    def set_name(self, player_num):
+    def set_name(self, prompt):
         self.name = random.choice(self.names)
         

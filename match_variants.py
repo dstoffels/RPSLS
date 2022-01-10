@@ -36,3 +36,9 @@ class Solo_Match(Match):
                 self.players.append(Computer())
             else:
                 self.players.append(Human())
+
+class Mixed_Multiplayer(Match):
+    # ask for num of human players
+    # ask for num of computer players
+    # override match rules for
+    pass

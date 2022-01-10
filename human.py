@@ -14,8 +14,8 @@ class Human(Player):
         self.did_forfeit_match()
 
        
-    def set_name(self, player_num):
-        self.name = input(f'Enter a name for player {player_num}: ')
+    def set_name(self, prompt):
+        self.name = input(prompt)
 
     def offer_gestures(self):
         i = 1
