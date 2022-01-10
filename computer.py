@@ -15,3 +15,4 @@ class Computer(Player):
     def set_name(self, prompt):
         self.name = random.choice(self.names)
         
+        

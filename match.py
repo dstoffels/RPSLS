@@ -15,9 +15,7 @@ class Match:
         self.setup_match()
         while not self.winner:
             self.display_round()
-            round_winners = self.players.copy()
-            while len(round_winners) > 1:
-                round_winners = Round(round_winners).play()
+            Round(self.players.copy()).play()
             self.display_player_scores()
             self.winner = self.has_winner()
             self.round_num += 1

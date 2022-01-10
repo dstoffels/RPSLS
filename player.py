@@ -34,10 +34,15 @@ class Player:
             self.set_name(prompt)
             for player in players:
                 if player != self: 
-                    match self.name:
-                        case '': prompt = 'Name cannot be blank, please re-enter: '
-                        case player.name: prompt = 'Name must be unique, please re-enter: '
-                        case _: is_unique = True
+                    if self.name == '': 
+                        is_unique = False
+                        prompt = 'Name cannot be blank, please re-enter: '
+                        break
+                    elif self.name == player.name: 
+                        is_unique = False
+                        prompt = 'Name must be unique, please re-enter: '
+                        break
+                    else: is_unique = True
     
 
     def has_winning_gesture(self, opponent_gesture):
