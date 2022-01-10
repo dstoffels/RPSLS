@@ -3,16 +3,25 @@ from gestures import GESTURES
 class Player:
     def __init__(self):
         self.name = ''
-        self.score = 0
+        self.points = 0
+        self.rounds_won = 0
         self.gestures = GESTURES
         self.current_gesture = ""
     
     def select_gesture(self):
         pass
 
-    def score_point(self, opponent_gesture):
-        print(f'\n{self.current_gesture} beats {opponent_gesture}. Point to {self.name}!')
-        self.score += 1
+    def score_point(self):
+        self.points += 1
+
+    def deduct_point(self):
+        self.points -= 1
+
+    def reset_points(self):
+        self.points = 0
+
+    def win_round(self):
+        self.rounds_won += 1
 
     def set_name(self):
         pass
@@ -32,7 +41,7 @@ class Player:
     
 
     def has_winning_gesture(self, opponent_gesture):
-        return True if opponent_gesture in self.gestures[self.current_gesture] else False
+        return opponent_gesture in self.gestures[self.current_gesture]
 
     def display_gesture(self):
         print(f"{self.name} chooses {self.current_gesture}")

@@ -1,5 +1,5 @@
 from gestures import FORFEIT
-from helpers import validate_index, validate_yes_or_no
+from helpers import clear_console, validate_index, validate_yes_or_no
 from player import Player
 
 class Human(Player):
@@ -12,6 +12,7 @@ class Human(Player):
         gesture_index = validate_index(f"{self.name}, enter the number of the gesture you would like to use: ", gesture_list)
         self.current_gesture = gesture_list[gesture_index]
         self.did_forfeit_match()
+        clear_console()
 
        
     def set_name(self, prompt):

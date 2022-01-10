@@ -1,27 +1,32 @@
-from random import choice
 import time
 from helpers import clear_console, pause, validate_int_input
 from player import Player
+from round import Round
 
 class Match:
     def __init__(self):
         self.players: list[Player] = []
         self.score_to_win = 0
-        self.current_round = 1
+        self.round_num = 1
         self.num_players = 2
         self.winner = None
         
     def run(self):
         self.setup_match()
         while not self.winner:
-            self.round()
+            self.display_round()
+            round_winners = self.players.copy()
+            while len(round_winners) > 1:
+                round_winners = Round(round_winners).play()
+            self.display_player_scores()
             self.winner = self.has_winner()
+            self.round_num += 1
         self.declare_winner(self.winner)
         input('\nPress return to continue...')
         
     def has_winner(self):
         for player in self.players:
-            if player.score == self.score_to_win: return player
+            if player.rounds_won == self.score_to_win: return player
         return None
 
     def setup_match(self):
@@ -37,24 +42,6 @@ class Match:
             #print(player.name)
             i += 1
 
-    def round(self):
-        self.display_round()
-        self.select_gestures()
-        self.display_gestures()
-        self.compare_gestures_and_award_point()
-        self.display_player_scores()
-        self.current_round += 1
-
-    def display_gestures(self):
-        print("")
-        for player in self.players:
-            player.display_gesture()
-            time.sleep(1)
-
-    def select_gestures(self):
-        for player in self.players:
-            player.select_gesture()
-
     def declare_winner(self, player): #good place to implement slow crawl
         print(f"\n******{player.name} WINS!!******")
 
@@ -62,54 +49,19 @@ class Match:
         for i in range(self.num_players):
             self.players.append(player_type())
 
-    def compare_gestures_and_award_point(self):
-        player1, player2 = self.players
-        if player1.has_winning_gesture(player2.current_gesture): player1.score_point(player2.current_gesture)
-        elif player2.has_winning_gesture(player1.current_gesture): player2.score_point(player1.current_gesture)
-        else: print("\nIt's a tie!")
-        time.sleep(0.75)
-
-    def display_player_scores(self):
-        print("\nScoreboard:\n")
-        for player in self.players:
-            print(f"{player.name}: {player.score}")
-        if not self.has_winner(): time.sleep(3)
-
-    def display_round(self):
-        clear_console()
-        print(f"\nRound {self.current_round}")
-        time.sleep(1)
-
     def choose_score_to_win(self):
         prompt = "How many points to win? "
         while self.score_to_win <1:
             self.score_to_win = validate_int_input(prompt)
             prompt = "Score to win must be greater than 0."
-            
 
-    #     for player in self.players:
-    #         for compared_player in self.players:
-    #             if player != compared_player:
-    #                 self.check_for_point_scored(player, compared_player)
-    #     self.current_round += 1
-
-    # def print_point_scored(self, winner, loser):
-    #     print(f"{winner.gesture} beats {loser.gesture}! {winner.name} wins this round!")
-
-    # def check_for_tie(self, player, compared_player):
-    #     if player.gesture == compared_player.gesture:
-    #         print(f"Both {player.name} and {compared_player.name} played {player.gesture}! It's a tie!")
-    #         return True
-    #     else:
-    #         return False
-
-    # def check_for_point_scored(self, player, compared_player):
-    #     if not self.check_for_tie(player, compared_player):
-    #         if compared_player.gesture in player.gestures[player.gesture]:
-    #             winner = player
-    #             loser = compared_player
-    #         else:
-    #             winner = compared_player
-    #             loser = player
-    #         self.print_point_scored(winner, loser)
-    #         winner.score_point()
+    def display_round(self):
+        clear_console()
+        print(f"\nRound {self.round_num}")
+        time.sleep(1)
+    
+    def display_player_scores(self):
+        print("\nScoreboard:\n")
+        for player in self.players:
+            print(f"{player.name}: {player.rounds_won}")
+        if not self.has_winner(): time.sleep(3)

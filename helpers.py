@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 
 def validate_int_input(prompt):
@@ -31,3 +32,6 @@ def clear_console():
 
 def pause():
     time.sleep(3)
+
+def append_line(string, separator = ''):
+        sys.stdout.write(string + separator)
