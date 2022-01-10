@@ -1,12 +1,12 @@
 from random import choice
 import time
-from helpers import clear_console, pause
+from helpers import clear_console, pause, validate_int_input
 from player import Player
 
 class Match:
     def __init__(self):
         self.players: list[Player] = []
-        self.score_to_win = 2
+        self.score_to_win = 0
         self.current_round = 1
         self.num_players = 2
         self.winner = None
@@ -25,7 +25,9 @@ class Match:
         return None
 
     def setup_match(self):
-        # ask for num of points to win
+        clear_console()
+        print("Match setup: ")
+        self.choose_score_to_win()
         self.set_player_names()
         
     def set_player_names(self):
@@ -61,13 +63,11 @@ class Match:
             self.players.append(player_type())
 
     def compare_gestures_and_award_point(self):
-        if len(self.players) == 2:
-            player1, player2 = self.players
-            if player1.has_winning_gesture(player2.current_gesture): player1.score_point(player2.current_gesture)
-            elif player2.has_winning_gesture(player1.current_gesture): player2.score_point(player1.current_gesture)
-            else: print("\nIt's a tie!")
-            time.sleep(0.75)
-        else: pass ## run logic for 3+ players (see below)
+        player1, player2 = self.players
+        if player1.has_winning_gesture(player2.current_gesture): player1.score_point(player2.current_gesture)
+        elif player2.has_winning_gesture(player1.current_gesture): player2.score_point(player1.current_gesture)
+        else: print("\nIt's a tie!")
+        time.sleep(0.75)
 
     def display_player_scores(self):
         print("\nScoreboard:\n")
@@ -79,6 +79,13 @@ class Match:
         clear_console()
         print(f"\nRound {self.current_round}")
         time.sleep(1)
+
+    def choose_score_to_win(self):
+        prompt = "How many points to win? "
+        while self.score_to_win <1:
+            self.score_to_win = validate_int_input(prompt)
+            prompt = "Score to win must be greater than 0."
+            
 
     #     for player in self.players:
     #         for compared_player in self.players:

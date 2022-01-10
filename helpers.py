@@ -25,7 +25,9 @@ def validate_yes_or_no(prompt):
             case _: prompt = 'Please enter yes or no: '
 
 def clear_console():
-    os.system('cls')
+    command = "clear"
+    if os.name in ("nt", "dos"): command = "cls"
+    os.system(command)
 
 def pause():
     time.sleep(3)
