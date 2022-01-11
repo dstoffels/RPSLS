@@ -79,6 +79,7 @@ class Round:
             winner = self.players[0]
             winner.win_round()
             print(f'\n*****{winner.name} wins the round!*****')
+        time.sleep(2)
 
     def activate_elimination_mode(self):
         self.display_elimination_round()
@@ -92,3 +93,4 @@ class Round:
             elif player == self.players[-1]: append_line(player.name, ' ')
             else: append_line(player.name, ', ')
         print('move onto an elimination round!')
+        time.sleep(2)

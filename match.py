@@ -39,15 +39,15 @@ class Match:
             player.validate_and_set_name(self.players, i)
             i += 1
 
-    def declare_winner(self, player): #good place to implement slow crawl
-        print(f"\n******{player.name} WINS!!******")
+    def declare_winner(self, player):
+        print(f"\n******{player.name.upper()} WINS!!******")
 
     def init_players(self, player_type):
         for i in range(self.num_players):
             self.players.append(player_type())
 
     def choose_score_to_win(self):
-        prompt = "How many points to win? "
+        prompt = "How many victories necessary to win the game? "
         while self.score_to_win <1:
             self.score_to_win = validate_int_input(prompt)
             prompt = "Score to win must be greater than 0."
@@ -61,4 +61,6 @@ class Match:
         print("\nScoreboard:\n")
         for player in self.players:
             print(f"{player.name}: {player.rounds_won}")
-        if not self.has_winner(): time.sleep(3)
+        time.sleep(3)
+
+    

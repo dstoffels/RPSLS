@@ -6,8 +6,8 @@ import random
 class Computer(Player):
     def __init__(self):
         super().__init__()
-        self.names = ['Bob', 'Scott', 'Lizzy', 'James', 'Tina', 'Nala']
-        self.suffixes = ['-Bob', '-Sue', ' Cito', ' Earl Jones', ' Turner', ' Sr.', ' Jr.', ' esq. III', ' of York']
+        self.names = ['Bob', 'Scott', 'Lizzy', 'James', 'Tina', 'Nala', 'Dan', 'Clyde', 'Harry', 'Timmy', 'Alexa', 'Mary', 'Joe', 'Sally', 'Bonnie', 'Leroy', 'Winnie', 'Lou']
+        self.suffixes = ['-Bob', '-Sue', 'cito', ' Earl Jones', ' Turner', ' Sr.', ' Jr.', ' esq. III', ' of York', '-Jane', ' Exotic', ' the Amazing', ' Houdini', ' Brown', ' Jenkins', ' Potter', '-Poo', ' the Pooh', ' Fraizer']
         self.new_names= []
     
     def select_gesture(self):
