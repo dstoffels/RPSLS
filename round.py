@@ -8,6 +8,7 @@ class Round:
         self.players: list[Player] = players
         self.num_init_players = len(players)
         self.high_score: int = 0
+        self.is_in_elimination = False
 
     def play(self) -> list[Player]:
         while len(self.players) > 1:
@@ -58,8 +59,11 @@ class Round:
 
     def display_results(self):
         if len(self.players) == self.num_init_players:
-            print(f"It's a {len(self.players)}-way tie! Next round...")
-            self.players.clear()
+            if self.is_in_elimination:
+                print("It's a tie, repeat elimination round...")
+            else:
+                print(f"It's a {len(self.players)}-way tie! Next round...")
+                self.players.clear()
         elif len(self.players) > 1:
             self.display_elimination_round()
         else:
@@ -75,4 +79,4 @@ class Round:
             else: append_line(player.name, ', ')
         print('move onto an elimination round!')
         self.num_init_players = len(self.players)
-
+        self.is_in_elimination = True
