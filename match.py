@@ -10,6 +10,7 @@ class Match:
         self.round_num = 1
         self.num_players = 2
         self.match_winner = None
+        self.pause_time = 3
         
     def run(self):
         self.setup_match()
@@ -17,15 +18,15 @@ class Match:
             self.display_round()
             Round(self.players.copy()).play()
             self.display_player_scores()
-            self.match_winner = self.has_winner()
+            self.has_winner()
             self.round_num += 1
-        self.declare_winner(self.match_winner)
         input('\nPress return to continue...')
         
     def has_winner(self):
         for player in self.players:
-            if player.rounds_won == self.score_to_win: return player
-        return None
+            if player.rounds_won == self.score_to_win: 
+                self.match_winner = player
+                self.declare_winner()
 
     def setup_match(self):
         clear_console()
@@ -39,8 +40,8 @@ class Match:
             player.validate_and_set_name(self.players, i)
             i += 1
 
-    def declare_winner(self, player):
-        print(f"\n******{player.name.upper()} WINS!!******")
+    def declare_winner(self):
+        print(f"\n******{self.match_winner.name.upper()} WINS!!******")
 
     def init_players(self, player_type):
         for i in range(self.num_players):
@@ -61,6 +62,6 @@ class Match:
         print("\nScoreboard:\n")
         for player in self.players:
             print(f"{player.name}: {player.rounds_won}")
-        time.sleep(3)
+        time.sleep(self.pause_time)
 
     
