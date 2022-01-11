@@ -1,5 +1,5 @@
 import time
-from helpers import clear_console, pause, validate_int_input
+from helpers import clear_console, validate_int_input
 from player import Player
 from round import Round
 
@@ -9,17 +9,17 @@ class Match:
         self.score_to_win = 0
         self.round_num = 1
         self.num_players = 2
-        self.winner = None
+        self.match_winner = None
         
     def run(self):
         self.setup_match()
-        while not self.winner:
+        while not self.match_winner:
             self.display_round()
             Round(self.players.copy()).play()
             self.display_player_scores()
-            self.winner = self.has_winner()
+            self.match_winner = self.has_winner()
             self.round_num += 1
-        self.declare_winner(self.winner)
+        self.declare_winner(self.match_winner)
         input('\nPress return to continue...')
         
     def has_winner(self):
@@ -37,7 +37,6 @@ class Match:
         i = 1
         for player in self.players:
             player.validate_and_set_name(self.players, i)
-            #print(player.name)
             i += 1
 
     def declare_winner(self, player): #good place to implement slow crawl

@@ -1,5 +1,6 @@
 from gestures import GESTURES
 
+# abstract class for Human & Computer classes
 class Player:
     def __init__(self):
         self.name = ''
@@ -26,7 +27,6 @@ class Player:
     def set_name(self):
         pass
 
-    # refactor??
     def validate_and_set_name(self, players, player_num): 
         prompt = f'Enter a name for player {player_num}: '
         is_unique = False
@@ -44,10 +44,8 @@ class Player:
                         break
                     else: is_unique = True
     
-
     def has_winning_gesture(self, opponent_gesture):
         return opponent_gesture in self.gestures[self.current_gesture]
 
     def display_gesture(self):
         print(f"{self.name} chooses {self.current_gesture}")
-    
